@@ -1,10 +1,23 @@
-import React, {useState} from "react"
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('admin');
+
+    const navigate = useNavigate();
+
+    const submitAdmin = event => {
+        event.preventDefault();
+        navigate('/admin');
+    }
+
+    const submitStudent = event => {
+        event.preventDefault();
+        navigate('/student');
+    }
 
     return (
         <div className="container">
@@ -52,7 +65,7 @@ const Login = (props) => {
                                 />
                             </div>
                             <div className="d-grid gap-2 mt-3">
-                                <button type="submit" className="btn btn-primary">
+                                <button type="submit" className="btn btn-primary" onClick={submitAdmin}>
                                     Submit
                                 </button>
                             </div>
@@ -86,7 +99,7 @@ const Login = (props) => {
                                 />
                             </div>
                             <div className="d-grid gap-2 mt-3">
-                                <button type="submit" className="btn btn-primary">
+                                <button type="submit" className="btn btn-primary" onClick={submitStudent}>
                                     Submit
                                 </button>
                             </div>
